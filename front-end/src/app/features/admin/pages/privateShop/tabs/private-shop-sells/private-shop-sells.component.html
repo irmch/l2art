@@ -1,0 +1,47 @@
+<div>
+  <p-table class="flex-item" [value]="privateShops()" [tableStyle]="{ 'min-width': '50rem' }"
+           [sortField]="'CreatedAt'"
+           [sortOrder]="1"
+           [loading]="isLoading()"
+           [(selection)]="selectedPrivateShop"
+           (onRowSelect)="onRowSelect($event)"
+           selectionMode="single"
+           rowHover="true"
+           stripedRows>
+    <ng-template pTemplate="caption">
+      <div class="table-header">
+        Private Shop [SELLS]
+      </div>
+    </ng-template>
+    <ng-template #header>
+      <tr>
+        <th>Vendor Name</th>
+        <th>Item Name</th>
+        <th>Item Id</th>
+        <th>Quantity</th>
+        <th>ObjectId</th>
+      </tr>
+    </ng-template>
+    <ng-template #body let-product>
+      <tr [pSelectableRow]="product">
+        <td>{{ product.vendorName }}</td>
+        <td>{{ product.itemName }}</td>
+        <td>{{ product.itemId }}</td>
+        <td>{{ product.quantity }}</td>
+        <td>{{ product.objectId }}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
+
+<p-dialog [(visible)]="displayChart" [modal]="true" [closable]="true" header="Graphic"
+          [contentStyle]="{ 'width': '50rem', 'height': '20rem' }"
+          [dismissableMask]="true"
+          class="custom-dialog">
+
+  <div class="chart-wrapper">
+    <p-chart type="line" [data]="chartData()" class="chart-full" width="100%" height="100%" draggable="false"></p-chart>
+  </div>
+</p-dialog>
+
+

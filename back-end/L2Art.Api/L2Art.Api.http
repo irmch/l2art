@@ -1,0 +1,6 @@
+@L2Art.Api_HostAddress = http://localhost:5067
+
+GET {{L2Art.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

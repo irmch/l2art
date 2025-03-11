@@ -1,0 +1,19 @@
+.custom-dialog .p-dialog-content {
+  display: flex;
+  flex-direction: column;
+  height: 100% !important;
+  width: 100% !important;
+  padding: 0;
+}
+.chart-wrapper {
+  flex-grow: 1;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.chart-full {
+  width: 100% !important;
+  height: 100% !important;
+}
