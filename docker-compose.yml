@@ -1,43 +1,42 @@
 services:
   nginx:
-    build:
-      context: ./nginx
-      dockerfile: Dockerfile 
+    image: nginx:alpine
     container_name: L2Art.nginx
+    ports:
+      - "80:80"
+      - "443:443"
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf
       - ./certbot/conf:/etc/letsencrypt
       - ./certbot/www:/var/www/certbot
-    ports:
-      - "80:80"
-      - "443:443"
-    depends_on:
-      - frontend
-      - backend
-    restart: always
+      - ./front-end/dist:/usr/share/nginx/html
+    networks:
+      - l2art-network
   
   certbot:
     image: certbot/certbot
-    container_name: certbot
-    depends_on:
-      - nginx
+    container_name: L2Art.certbot
     volumes:
       - ./certbot/conf:/etc/letsencrypt
       - ./certbot/www:/var/www/certbot
     command: certonly --webroot -w /var/www/certbot --keep-until-expiring --email mouzy724@gmail.com -d l2art.duckdns.org --agree-tos
+    networks:
+      - l2art-network
 
     # need to hide data after deploy on real server
   postgres:
     image: postgres:latest
-    environment:
-      - POSTGRES_DB=l2art_db
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=yourpassword
     container_name: L2Art.db
+    environment:
+      POSTGRES_DB: l2art_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: yourpassword
     ports:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    networks:
+      - l2art-network
 
   backend:
     build:
@@ -46,21 +45,30 @@ services:
     container_name: L2Art.backend
     ports:
       - "5000:5000"
-      - "5001:5001"
     depends_on:
       - postgres
-    restart: always
+    networks:
+      - l2art-network
 
 
   frontend:
     build:
       context: ./front-end
-      dockerfile: Dockerfile 
-      target: production 
+      dockerfile: Dockerfile
+      target: build
     container_name: L2Art.frontend
     image: angular-prod
-    ports:
-      - "4200:4200"
-  
+    restart: always
+    depends_on:
+      - nginx
+      - backend
+    networks:
+      - l2art-network
+
+networks:
+  l2art-network:
+    driver: bridge
+
+
 volumes:
   postgres_data:

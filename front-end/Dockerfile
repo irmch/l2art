@@ -1,13 +1,15 @@
-FROM node:20-alpine AS development
-
+FROM node:20-alpine AS build
 WORKDIR /app
-
 RUN npm install -g @angular/cli
 COPY package*.json ./
 RUN npm install
-
 COPY . .
+RUN npm run build --prod
 
-CMD ["ng", "serve", "--host", "0.0.0.0", "--port", "4200", "--disable-host-check", "--poll", "2000", "--watch"]
 
-EXPOSE 4200
+FROM node:20-alpine AS development
+WORKDIR /app
+RUN npm install -g @angular/cli
+COPY package*.json ./
+RUN npm install
+COPY . .
