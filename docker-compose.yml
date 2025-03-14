@@ -45,6 +45,7 @@ services:
     container_name: L2Art.backend
     ports:
       - "5000:5000"
+      - "5001:5001"
     depends_on:
       - postgres
     networks:
@@ -58,7 +59,7 @@ services:
       target: build
     container_name: L2Art.frontend
     image: angular-prod
-    restart: always
+    # restart: always
     networks:
       - l2art-network
 
