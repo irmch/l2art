@@ -15,7 +15,7 @@ interface AuctionServiceState {
   providedIn: 'root'
 })
 export class AuctionService {
-  baseUrl: string = 'http:///0.0.0.0/api';
+  baseUrl: string = '/api';
   signalrService = inject(SignalRService);
   http = inject(HttpClient);
   subj = new BehaviorSubject(1);
