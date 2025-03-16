@@ -1,4 +1,4 @@
-FROM node:20-alpine AS build
+FROM public.ecr.aws/docker/library/node:20-alpine AS build
 WORKDIR /app
 RUN npm install -g @angular/cli
 COPY package*.json ./
@@ -7,7 +7,7 @@ COPY . .
 RUN npm run build --prod
 
 
-FROM node:20-alpine AS development
+FROM public.ecr.aws/docker/library/node:20-alpine AS development
 WORKDIR /app
 RUN npm install -g @angular/cli
 COPY package*.json ./
