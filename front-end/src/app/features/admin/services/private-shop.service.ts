@@ -14,7 +14,7 @@ interface PrivateShopServiceState {
   providedIn: 'root',
 })
 export class PrivateShopService {
-  baseUrl: string = 'http://0.0.0.0/api';
+  baseUrl: string = 'http://51.38.114.22/api';
   signalrService = inject(SignalRService);
   http = inject(HttpClient);
 
