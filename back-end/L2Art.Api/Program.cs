@@ -22,8 +22,7 @@ builder.Services.AddCors(options =>
         policy => policy
             .SetIsOriginAllowed(origin => true)
             .AllowAnyMethod()
-            .AllowAnyHeader()
-            .AllowCredentials());
+            .AllowAnyHeader());
 });
 
 builder.Services.AddEndpointsApiExplorer();
