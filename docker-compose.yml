@@ -1,6 +1,6 @@
 services:
   nginx:
-    image: nginx:alpine
+    image: public.ecr.aws/nginx/nginx:alpine
     container_name: L2Art.nginx
     ports:
       - "80:80"
@@ -30,7 +30,7 @@ services:
 
     # need to hide data after deploy on real server
   postgres:
-    image: postgres:latest
+    image: public.ecr.aws/docker/library/postgres:latest
     container_name: L2Art.db
     environment:
       POSTGRES_DB: l2art_db
