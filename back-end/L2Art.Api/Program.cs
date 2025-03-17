@@ -18,11 +18,12 @@ builder.Services.AddApiAuthentication(builder.Configuration);
 
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowAll",
+    options.AddPolicy("AllowSpecificOrigins",
         policy => policy
-            .SetIsOriginAllowed(origin => true)
+            .WithOrigins("http://51.38.114.22", "http://localhost")
             .AllowAnyMethod()
-            .AllowAnyHeader());
+            .AllowAnyHeader()
+            .AllowCredentials());
 });
 
 builder.Services.AddEndpointsApiExplorer();
