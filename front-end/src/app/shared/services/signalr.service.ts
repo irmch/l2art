@@ -7,7 +7,7 @@ import { HubConnection, HubConnectionBuilder } from '@microsoft/signalr';
 export class SignalRService {
   private hubConnection: HubConnection;
   messages = signal<any[]>([]);
-  hubUrl = "/api/items-hub";
+  hubUrl = "http://backend/api/items-hub";
 
   constructor() {
     this.hubConnection = new HubConnectionBuilder()

@@ -38,11 +38,7 @@
       "useSSL": true
     }
   },
-  "Docker": {
-    "commandName": "Docker",
-    "launchBrowser": true,
-    "launchUrl": "{Scheme}://0.0.0.0:{ServicePort}/ws"
-  },
+
   "$schema": "http://json.schemastore.org/launchsettings.json",
   "iisSettings": {
     "windowsAuthentication": false,
