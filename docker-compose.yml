@@ -49,7 +49,7 @@ services:
       dockerfile: L2Art.Api/Dockerfile
     container_name: L2Art.backend
     ports:
-      - "8080:5000"
+      - "8080:8080"
       - "5001:5001"
     depends_on:
       - postgres
