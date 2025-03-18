@@ -15,6 +15,7 @@ export class SignalRService {
         skipNegotiation: true,
         transport: HttpTransportType.WebSockets
       })
+      .withAutomaticReconnect()
       .configureLogging(LogLevel.Debug)
       .build();
 
