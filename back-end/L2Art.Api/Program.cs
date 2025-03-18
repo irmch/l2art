@@ -85,7 +85,7 @@ app.UseCookiePolicy(
     );
 
 
-app.MapHub<ItemHub>("/api/items-hub");
+app.MapHub<ItemHub>("/items-hub");
 
 
 app.Run();

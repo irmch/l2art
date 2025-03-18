@@ -7,7 +7,7 @@ import {HttpTransportType, HubConnection, HubConnectionBuilder, LogLevel} from '
 export class SignalRService {
   private hubConnection: HubConnection;
   messages = signal<any[]>([]);
-  hubUrl = "/api/items-hub";
+  hubUrl = "/items-hub";
 
   constructor() {
     this.hubConnection = new HubConnectionBuilder()
