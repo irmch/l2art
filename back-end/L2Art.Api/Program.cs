@@ -52,7 +52,7 @@ app.UseForwardedHeaders(new ForwardedHeadersOptions
     ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
 });
 
-app.UseCors("AllowAll");
+app.UseCors("AllowSpecificOrigins");
 
 
 // Configure the HTTP request pipeline.

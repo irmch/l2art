@@ -42,8 +42,7 @@
               "RelativeToolTip": "L2Art.Application\\Services\\ItemHub.cs",
               "ViewState": "AgIAABAAAAAAAAAAAAAQwC4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-18T03:03:51.183Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-18T03:03:51.183Z"
             },
             {
               "$type": "Document",
@@ -66,8 +65,7 @@
               "RelativeToolTip": "L2Art.Api\\Program.cs",
               "ViewState": "AgIAAC0AAAAAAAAAAAAAABcAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-15T12:32:48.077Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-15T12:32:48.077Z"
             },
             {
               "$type": "Document",
@@ -77,7 +75,7 @@
               "RelativeDocumentMoniker": "L2Art.Api\\Properties\\launchSettings.json",
               "ToolTip": "C:\\Users\\mirage\\Documents\\work\\l2art\\back-end\\L2Art.Api\\Properties\\launchSettings.json",
               "RelativeToolTip": "L2Art.Api\\Properties\\launchSettings.json",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAAC4AAAArAAAAAAAAAA==",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAAC4AAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
               "WhenOpened": "2025-03-15T11:06:02.345Z",
               "EditorCaption": ""
