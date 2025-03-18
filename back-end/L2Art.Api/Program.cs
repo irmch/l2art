@@ -61,11 +61,11 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 
-    app.ApplyMigrations();
+    
 }
 
 //app.UseHttpsRedirection();
-
+app.ApplyMigrations();
 
 app.UseAuthentication();
 app.UseAuthorization();
@@ -85,7 +85,7 @@ app.UseCookiePolicy(
     );
 
 
-app.MapHub<ItemHub>("/items-hub");
+app.MapHub<ItemHub>("/api/items-hub");
 
 
 app.Run();
