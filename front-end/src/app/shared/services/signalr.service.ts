@@ -1,5 +1,5 @@
-import {Injectable, signal, effect, Inject} from '@angular/core';
-import { HubConnection, HubConnectionBuilder } from '@microsoft/signalr';
+import {Injectable, signal} from '@angular/core';
+import {HttpTransportType, HubConnection, HubConnectionBuilder, LogLevel} from '@microsoft/signalr';
 
 @Injectable({
   providedIn: 'root'
@@ -7,11 +7,15 @@ import { HubConnection, HubConnectionBuilder } from '@microsoft/signalr';
 export class SignalRService {
   private hubConnection: HubConnection;
   messages = signal<any[]>([]);
-  hubUrl = "http://localhost:5000/api/items-hub";
+  hubUrl = "http://localhost:7087/api/items-hub";
 
   constructor() {
     this.hubConnection = new HubConnectionBuilder()
-      .withUrl(this.hubUrl)
+      .withUrl(this.hubUrl, {
+        skipNegotiation: true,
+        transport: HttpTransportType.WebSockets
+      })
+      .configureLogging(LogLevel.Debug)
       .build();
 
     this.startConnection();
