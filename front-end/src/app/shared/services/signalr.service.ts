@@ -7,7 +7,7 @@ import {HttpTransportType, HubConnection, HubConnectionBuilder, LogLevel} from '
 export class SignalRService {
   private hubConnection: HubConnection;
   messages = signal<any[]>([]);
-  hubUrl = "/api/items-hub";
+  hubUrl = "http://localhost:8080/api/items-hub";
 
   constructor() {
     this.hubConnection = new HubConnectionBuilder()
@@ -16,7 +16,7 @@ export class SignalRService {
         transport: HttpTransportType.WebSockets
       })
       .withAutomaticReconnect()
-      .configureLogging(LogLevel.Debug)
+      //.configureLogging(LogLevel.Debug)
       .build();
 
     this.startConnection();

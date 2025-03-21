@@ -18,7 +18,6 @@ export class AuctionService {
   baseUrl: string = '/api';
   signalrService = inject(SignalRService);
   http = inject(HttpClient);
-  subj = new BehaviorSubject(1);
 
   state = signal<AuctionServiceState>({
     auctions: [],
@@ -30,10 +29,18 @@ export class AuctionService {
   isLoading = computed(() => this.state().isLoading);
   auctionsById = computed(() => this.state().auctionsById);
 
+  playNotifySound(){
+    const notifySound = new Audio();
+    notifySound.src = 'assets/sounds/notify/private_shop.mp3';
+    notifySound.load();
+
+    notifySound.play().catch(err => {
+      console.warn(`Cant play sound:`, err);
+    });
+  }
+
   constructor() {
     this.signalrService.listen('BestDealAuction_init', (data: string) => {
-      this.subj.next(JSON.parse(data));
-      console.log(data);
       const res:Auction[] = JSON.parse(data);
       this.state.update((prev) => ({
         ...prev,

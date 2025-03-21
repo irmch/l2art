@@ -1,34 +1,6 @@
-services:
-  nginx:
-    image: public.ecr.aws/nginx/nginx:alpine
-    container_name: L2Art.nginx
-    ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
-      - frontend-build:/usr/share/nginx/html
-      #- ./nginx/nginx.conf:/etc/nginx/nginx.conf
-      # - ./certbot/conf:/etc/letsencrypt
-      # - ./certbot/www:/var/www/certbot
-      # - ./front-end/dist/frontend/browser:/usr/share/nginx/html
-      
-    depends_on:
-      - frontend
-    networks:
-      - l2art-network
-  
-  # certbot:
-  #   image: certbot/certbot
-  #   container_name: L2Art.certbot
-  #   volumes:
-  #     - ./certbot/conf:/etc/letsencrypt
-  #     - ./certbot/www:/var/www/certbot
-  #   command: certonly --webroot -w /var/www/certbot --keep-until-expiring --email mouzy724@gmail.com -d l2art.duckdns.org --agree-tos
-  #   networks:
-  #     - l2art-network
+version: "3.9"
 
-    # need to hide data after deploy on real server
+services:
   postgres:
     image: public.ecr.aws/docker/library/postgres:latest
     container_name: L2Art.db
@@ -50,12 +22,11 @@ services:
     container_name: L2Art.backend
     ports:
       - "8080:8080"
-      - "5001:5001"
+      - "8081:8081"
     depends_on:
       - postgres
     networks:
       - l2art-network
-
 
   frontend:
     build:
@@ -64,16 +35,30 @@ services:
       target: build
     container_name: L2Art.frontend
     image: angular-prod
-    # restart: always
     volumes:
       - frontend-build:/app/dist/frontend/browser
+    networks:
+      - l2art-network
+
+  nginx:
+    image: public.ecr.aws/nginx/nginx:alpine
+    container_name: L2Art.nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - frontend-build:/usr/share/nginx/html
+      # - ./certbot/conf:/etc/letsencrypt
+      # - ./certbot/www:/var/www/certbot
+    depends_on:
+      - frontend
     networks:
       - l2art-network
 
 networks:
   l2art-network:
     driver: bridge
-  
 
 volumes:
   frontend-build:

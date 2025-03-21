@@ -18,6 +18,7 @@ export class PrivateShopService {
   signalrService = inject(SignalRService);
   http = inject(HttpClient);
 
+
   state = signal<PrivateShopServiceState>({
     privateShops: [],
     isLoading: true,
@@ -28,6 +29,15 @@ export class PrivateShopService {
   isLoading = computed(() => this.state().isLoading);
   privateShopsById = computed(() => this.state().privateShopsById);
 
+  playNotifySound(){
+    const notifySound = new Audio();
+    notifySound.src = 'assets/sounds/notify/private_shop.mp3';
+    notifySound.load();
+
+    notifySound.play().catch(err => {
+      console.warn(`Cant play sound:`, err);
+    });
+  }
   constructor() {
     this.signalrService.listen('BestDealPrivateShops_init', (data) => {
       const res: IPrivateShop[] = JSON.parse(data);
@@ -45,6 +55,7 @@ export class PrivateShopService {
         ...prev,
         privateShops: [...prev.privateShops, res]
       }));
+      this.playNotifySound();
     });
 
     this.signalrService.listen('BestDealPrivateShops_delete', (data) => {

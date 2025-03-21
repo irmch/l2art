@@ -20,7 +20,7 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowSpecificOrigins",
         policy => policy
-            .WithOrigins("http://51.38.114.22:8080", "http://localhost:8080")
+            .WithOrigins("http://51.38.114.22", "http://localhost")
             .AllowAnyMethod()
             .AllowAnyHeader()
             .AllowCredentials());
@@ -61,11 +61,10 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 
-    
+    app.ApplyMigrations();
 }
-
 //app.UseHttpsRedirection();
-app.ApplyMigrations();
+
 
 app.UseAuthentication();
 app.UseAuthorization();
