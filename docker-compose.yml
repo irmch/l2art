@@ -23,7 +23,6 @@ services:
     ports:
       - "8080:8080"
       - "8081:8081"
-    command: dotnet ef update -s back-end/L2Art.App -p back-end/L2Art.Infrastructure
     depends_on:
       - postgres
     networks:

@@ -61,10 +61,10 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 
-    app.ApplyMigrations();
+
 }
 //app.UseHttpsRedirection();
-
+app.ApplyMigrations();
 
 app.UseAuthentication();
 app.UseAuthorization();
