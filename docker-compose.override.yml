@@ -1,6 +1,7 @@
+version: "3.9"
 services:
   nginx:
-    image: nginx:latest
+    image: public.ecr.aws/nginx/nginx:alpine
     ports:
       - "80:80"
     volumes:
@@ -9,7 +10,7 @@ services:
       - backend
 
   postgres:
-    image: postgres:latest
+    image: public.ecr.aws/docker/library/postgres:latest
     container_name: L2Art.db
     environment:
       POSTGRES_DB: l2art_db
