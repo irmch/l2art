@@ -1,4 +1,4 @@
-# 🎨 art
+# 🎨 l2art
 
 **l2art** is a website dedicated to enhancing the Lineage II gaming community by providing valuable resources, guides, and tools to enrich the player experience. The project is developed using principles from Domain-Driven Design (DDD) and Clean Architecture to ensure flexibility, scalability, and maintainability.
 
