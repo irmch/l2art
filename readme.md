@@ -50,4 +50,4 @@ The project follows the Clean Architecture principles, organized into distinct l
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/dir724/l2art.git
+   git clone https://github.com/irmch/l2art.git
